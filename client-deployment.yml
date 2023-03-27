@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: Web
+  template:
+    metadata:
+      labels:
+        component: Web
+    spec:
+      containers:
+        - name: client
+          image: varvaradialog/multi-client
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
